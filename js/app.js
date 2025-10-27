@@ -530,7 +530,52 @@ function continueRolling() {
 function finishGame() {
   stage3Data.endTime = new Date().toISOString();
   surveyData.gamePlay.stage3 = stage3Data;
-  
-  // Navigate to ending story
-  navigateTo('ending-story');
+
+  // Navigate to interim story
+  navigateTo('interim-story');
+
+  // Display cards after a short delay to ensure page is loaded
+  setTimeout(() => {
+    displayInterimCards();
+  }, 500);
+}
+
+function displayInterimCards() {
+  // Display remaining cards
+  const remainingContainer = document.getElementById('interim-remaining-cards');
+  const remainingCountEl = document.getElementById('interim-remaining-count');
+
+  if (remainingContainer && remainingCountEl) {
+    remainingContainer.innerHTML = '';
+    remainingCountEl.textContent = stage3Data.remainingCards.length;
+
+    stage3Data.remainingCards.forEach(card => {
+      const cardEl = document.createElement('div');
+      cardEl.className = `interim-card ${card.category}`;
+      cardEl.innerHTML = `
+        <div class="card-category">${card.category}</div>
+        <div class="card-text">${card.text}</div>
+      `;
+      remainingContainer.appendChild(cardEl);
+    });
+  }
+
+  // Display lost cards
+  const lostContainer = document.getElementById('interim-lost-cards');
+  const lostCountEl = document.getElementById('interim-lost-count');
+
+  if (lostContainer && lostCountEl) {
+    lostContainer.innerHTML = '';
+    lostCountEl.textContent = stage3Data.lostCards.length;
+
+    stage3Data.lostCards.forEach(card => {
+      const cardEl = document.createElement('div');
+      cardEl.className = `interim-card ${card.category} lost`;
+      cardEl.innerHTML = `
+        <div class="card-category">${card.category}</div>
+        <div class="card-text">${card.text}</div>
+      `;
+      lostContainer.appendChild(cardEl);
+    });
+  }
 }

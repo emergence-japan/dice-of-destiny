@@ -733,3 +733,104 @@ h1, h2, h3, h4, h5, h6 {
   cursor: not-allowed;
   background: rgba(0,0,0,0.4);
 }
+
+/* Interim Cards Display */
+.interim-cards-display {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.interim-cards-section {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.interim-cards-section h3 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.interim-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.interim-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.interim-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.interim-card .card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.interim-card.items .card-category {
+  background: var(--color-items);
+  color: white;
+}
+
+.interim-card.person .card-category {
+  background: var(--color-person);
+  color: white;
+}
+
+.interim-card.places .card-category {
+  background: var(--color-places);
+  color: white;
+}
+
+.interim-card.events .card-category {
+  background: var(--color-events);
+  color: #1F2937;
+}
+
+.interim-card.goals .card-category {
+  background: var(--color-goals);
+  color: white;
+}
+
+.interim-card.lost {
+  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.interim-card .card-text {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.4;
+}
+
+/* Responsive Design for Interim Cards */
+@media (max-width: 768px) {
+  .interim-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interim-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -49,7 +49,7 @@
       </div>
       
       <div class="time-estimate">
-        <p><strong>Estimated Time:</strong> 60-75 minutes</p>
+        <p><strong>Estimated Time:</strong> Approximately 30 minutes</p>
         <p><em>Please ensure you have enough time to complete the entire experience.</em></p>
       </div>
       
@@ -89,10 +89,7 @@
             <label for="anonymous-code" class="question-label required">
               Q1: Anonymous Code
             </label>
-            <p class="question-help">
-              Please create a short anonymous code so that we can match your responses 
-              in the pre- and post-surveys without collecting your name.
-            </p>
+
             <input 
               type="text" 
               id="anonymous-code" 
@@ -1392,7 +1389,9 @@
             </div>
             <div id="continue-or-finish" class="continue-or-finish" style="display: none;">
               <button class="btn-primary" onclick="continueRolling()">Continue Rolling</button>
-              <button class="btn-secondary" onclick="finishGame()">Finish Game</button>
+                            <button class="btn-secondary" onclick="navigateTo('interim-story')">
+                              Finish Game
+                            </button>
             </div>
           </div>
           
@@ -1404,12 +1403,40 @@
             </div>
           </div>
         </div>
-      </div>
+            </div>
+          </div>
+        </section>
       
-    </div>
-  </section>
+        <section id="interim-story" class="screen story-screen">
+          <div class="content-wrapper story-content">
+                  <div class="story-text">
+                    <p>After all rolls are complete, take time to look at your board again.</p>
+                    <p>Which cards remain? Which cards were lost? And what does that mean to you?</p>
+                  </div>
 
-  <section id="ending-story" class="screen story-screen">
+                  <div class="interim-cards-display">
+                    <div class="interim-cards-section">
+                      <h3>Remaining Cards (<span id="interim-remaining-count">0</span>)</h3>
+                      <div id="interim-remaining-cards" class="interim-cards-grid">
+                        <!-- Remaining cards will be displayed here -->
+                      </div>
+                    </div>
+
+                    <div class="interim-cards-section">
+                      <h3>Lost Cards (<span id="interim-lost-count">0</span>)</h3>
+                      <div id="interim-lost-cards" class="interim-cards-grid">
+                        <!-- Lost cards will be displayed here -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="btn-primary" onclick="navigateTo('ending-story')">
+              Continue
+            </button>
+          </div>
+        </section>
+      
+        <section id="ending-story" class="screen story-screen">
     <div class="content-wrapper story-content">
       <div class="story-text">
         <p>After rolling all the dice, slowly close your eyes.</p>
@@ -1451,34 +1478,13 @@
             <div class="progress-fill" id="post-survey-progress"></div>
           </div>
           <p class="progress-text">
-            <span id="post-answered-count">0</span> of <span class="total-count">51</span> questions answered
+            <span id="post-answered-count">0</span> of <span class="total-count">50</span> questions answered
           </p>
         </div>
 
-        <!-- Section 0: Anonymous Code -->
-        <div class="survey-section">
-          <h3 class="section-title">Anonymous Code</h3>
-          <div class="question-group">
-            <label for="post-anonymous-code" class="question-label required">
-              Q1: Anonymous Code
-            </label>
-            <p class="question-help">
-              Please enter the same anonymous code you created in the pre-survey.
-            </p>
-            <input 
-              type="text" 
-              id="post-anonymous-code" 
-              name="anonymous_code" 
-              class="text-input"
-              required
-              minlength="3"
-              maxlength="20"
-              placeholder="Enter your memorable code"
-            />
-          </div>
-        </div>
+
         
-        <!-- Section 1: Life Satisfaction (Q2-Q9) -->
+        <!-- Section 1: Life Satisfaction (Q1-Q8) -->
         <div class="survey-section">
           <h3 class="section-title">Section 1: Life Satisfaction</h3>
           <p class="section-instructions">
@@ -1486,9 +1492,26 @@
             There are no right or wrong answers. Please respond honestly according to how you feel.
           </p>
           <div class="likert-questions">
+            <!-- Q1 -->
+            <div class="likert-question">
+              <label class="question-label required">Q1: I am satisfied with my life.</label>
+              <div class="likert-scale">
+                <span class="scale-label">Strongly Disagree</span>
+                <div class="scale-options">
+                  <label class="scale-option"><input type="radio" name="q1" value="1" required /><span class="scale-number">1</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="2" required /><span class="scale-number">2</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="3" required /><span class="scale-number">3</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="4" required /><span class="scale-number">4</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="5" required /><span class="scale-number">5</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="6" required /><span class="scale-number">6</span></label>
+                  <label class="scale-option"><input type="radio" name="q1" value="7" required /><span class="scale-number">7</span></label>
+                </div>
+                <span class="scale-label">Strongly Agree</span>
+              </div>
+            </div>
             <!-- Q2 -->
             <div class="likert-question">
-              <label class="question-label required">Q2: I am satisfied with my life.</label>
+              <label class="question-label required">Q2: The conditions of my life are excellent.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1505,7 +1528,7 @@
             </div>
             <!-- Q3 -->
             <div class="likert-question">
-              <label class="question-label required">Q3: The conditions of my life are excellent.</label>
+              <label class="question-label required">Q3: I am doing well in my life.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1522,7 +1545,7 @@
             </div>
             <!-- Q4 -->
             <div class="likert-question">
-              <label class="question-label required">Q4: I am doing well in my life.</label>
+              <label class="question-label required">Q4: I have gotten the important things I want in life.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1539,7 +1562,7 @@
             </div>
             <!-- Q5 -->
             <div class="likert-question">
-              <label class="question-label required">Q5: I have gotten the important things I want in life.</label>
+              <label class="question-label required">Q5: If I could live my life over, I would change almost nothing.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1556,7 +1579,7 @@
             </div>
             <!-- Q6 -->
             <div class="likert-question">
-              <label class="question-label required">Q6: If I could live my life over, I would change almost nothing.</label>
+              <label class="question-label required">Q6: My life is full of value.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1573,7 +1596,7 @@
             </div>
             <!-- Q7 -->
             <div class="likert-question">
-              <label class="question-label required">Q7: My life is full of value.</label>
+              <label class="question-label required">Q7: My personal existence is significant.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1590,7 +1613,7 @@
             </div>
             <!-- Q8 -->
             <div class="likert-question">
-              <label class="question-label required">Q8: My personal existence is significant.</label>
+              <label class="question-label required">Q8: Every day, I experience the sense that life is worth living.</label>
               <div class="likert-scale">
                 <span class="scale-label">Strongly Disagree</span>
                 <div class="scale-options">
@@ -1605,37 +1628,37 @@
                 <span class="scale-label">Strongly Agree</span>
               </div>
             </div>
-            <!-- Q9 -->
-            <div class="likert-question">
-              <label class="question-label required">Q9: Every day, I experience the sense that life is worth living.</label>
-              <div class="likert-scale">
-                <span class="scale-label">Strongly Disagree</span>
-                <div class="scale-options">
-                  <label class="scale-option"><input type="radio" name="q9" value="1" required /><span class="scale-number">1</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="2" required /><span class="scale-number">2</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="3" required /><span class="scale-number">3</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="4" required /><span class="scale-number">4</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="5" required /><span class="scale-number">5</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="6" required /><span class="scale-number">6</span></label>
-                  <label class="scale-option"><input type="radio" name="q9" value="7" required /><span class="scale-number">7</span></label>
-                </div>
-                <span class="scale-label">Strongly Agree</span>
-              </div>
-            </div>
           </div>
         </div>
         <!-- End Section 1 -->
         
-        <!-- Section 2: Self-Efficacy (Q10-Q22) -->
+        <!-- Section 2: Self-Efficacy (Q9-Q21) -->
         <div class="survey-section">
             <h3 class="section-title">Section 2: Self-Efficacy</h3>
             <p class="section-instructions">
                 This section is about your confidence in performing certain activities.
             </p>
             <div class="likert-questions">
+                <!-- Q9 -->
+                <div class="likert-question">
+                  <label class="question-label required">Q9: Break an upsetting problem down into smaller parts</label>
+                  <div class="likert-scale">
+                    <span class="scale-label">Strongly Disagree</span>
+                    <div class="scale-options">
+                      <label class="scale-option"><input type="radio" name="q9" value="1" required /><span class="scale-number">1</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="2" required /><span class="scale-number">2</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="3" required /><span class="scale-number">3</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="4" required /><span class="scale-number">4</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="5" required /><span class="scale-number">5</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="6" required /><span class="scale-number">6</span></label>
+                      <label class="scale-option"><input type="radio" name="q9" value="7" required /><span class="scale-number">7</span></label>
+                    </div>
+                    <span class="scale-label">Strongly Agree</span>
+                  </div>
+                </div>
                 <!-- Q10 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q10: Break an upsetting problem down into smaller parts</label>
+                  <label class="question-label required">Q10: Persist in solving a problem even when it seems difficult</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1652,7 +1675,7 @@
                 </div>
                 <!-- Q11 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q11: Persist in solving a problem even when it seems difficult</label>
+                  <label class="question-label required">Q11: Make unpleasant thoughts go away</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1669,7 +1692,7 @@
                 </div>
                 <!-- Q12 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q12: Make unpleasant thoughts go away</label>
+                  <label class="question-label required">Q12: Think positively about your future</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1686,7 +1709,7 @@
                 </div>
                 <!-- Q13 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q13: Think positively about your future</label>
+                  <label class="question-label required">Q13: Control your negative thoughts</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1703,7 +1726,7 @@
                 </div>
                 <!-- Q14 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q14: Control your negative thoughts</label>
+                  <label class="question-label required">Q14: Stop yourself from being upset by unpleasant thoughts</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1720,7 +1743,7 @@
                 </div>
                 <!-- Q15 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q15: Stop yourself from being upset by unpleasant thoughts</label>
+                  <label class="question-label required">Q15: Keep from feeling sad</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1737,7 +1760,7 @@
                 </div>
                 <!-- Q16 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q16: Keep from feeling sad</label>
+                  <label class="question-label required">Q16: Get emotional support from friends and family</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1754,7 +1777,7 @@
                 </div>
                 <!-- Q17 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q17: Get emotional support from friends and family</label>
+                  <label class="question-label required">Q17: Get friends to help you with the things you need</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1771,7 +1794,7 @@
                 </div>
                 <!-- Q18 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q18: Get friends to help you with the things you need</label>
+                  <label class="question-label required">Q18: Get emotional support from community organizations</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1788,7 +1811,7 @@
                 </div>
                 <!-- Q19 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q19: Get emotional support from community organizations</label>
+                  <label class="question-label required">Q19: Ask people in your community for help when you need it</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1805,7 +1828,7 @@
                 </div>
                 <!-- Q20 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q20: Ask people in your community for help when you need it</label>
+                  <label class="question-label required">Q20: Get emotional support from outside the family</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1822,7 +1845,7 @@
                 </div>
                 <!-- Q21 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q21: Get emotional support from outside the family</label>
+                  <label class="question-label required">Q21: [Note: Q25 appears missing in original survey]</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1837,9 +1860,20 @@
                     <span class="scale-label">Strongly Agree</span>
                   </div>
                 </div>
+            </div>
+        </div>
+        <!-- End Section 2 -->
+
+        <!-- Section 3: Post-Traumatic Growth (Q22-Q35) -->
+        <div class="survey-section">
+            <h3 class="section-title">Section 3: Post-Traumatic Growth</h3>
+            <p class="section-instructions">
+                The following statements ask you about changes you have experienced in your life.
+            </p>
+            <div class="likert-questions">
                 <!-- Q22 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q22: [Note: Q25 appears missing in original survey]</label>
+                  <label class="question-label required">Q22: I experienced a change in how I treat others.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1854,20 +1888,9 @@
                     <span class="scale-label">Strongly Agree</span>
                   </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Section 2 -->
-
-        <!-- Section 3: Post-Traumatic Growth (Q23-Q36) -->
-        <div class="survey-section">
-            <h3 class="section-title">Section 3: Post-Traumatic Growth</h3>
-            <p class="section-instructions">
-                The following statements ask you about changes you have experienced in your life.
-            </p>
-            <div class="likert-questions">
                 <!-- Q23 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q23: I experienced a change in how I treat others.</label>
+                  <label class="question-label required">Q23: I experienced a change in the extent to which I feel free to make my own decisions.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1884,7 +1907,7 @@
                 </div>
                 <!-- Q24 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q24: I experienced a change in the extent to which I feel free to make my own decisions.</label>
+                  <label class="question-label required">Q24: I experienced a change in my belief that I have something of value to teach others about life.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1901,7 +1924,7 @@
                 </div>
                 <!-- Q25 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q25: I experienced a change in my belief that I have something of value to teach others about life.</label>
+                  <label class="question-label required">Q25: I experienced a change in the extent to which I can be myself and not try to be what others want me to be.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1918,7 +1941,7 @@
                 </div>
                 <!-- Q26 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q26: I experienced a change in the extent to which I can be myself and not try to be what others want me to be.</label>
+                  <label class="question-label required">Q26: I experienced a change in the extent to which I work through problems and not just give up.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1935,7 +1958,7 @@
                 </div>
                 <!-- Q27 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q27: I experienced a change in the extent to which I work through problems and not just give up.</label>
+                  <label class="question-label required">Q27: I experienced a change in the extent to which I find meaning in life.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1952,7 +1975,7 @@
                 </div>
                 <!-- Q28 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q28: I experienced a change in the extent to which I find meaning in life.</label>
+                  <label class="question-label required">Q28: I experienced a change in the extent to which I reach out and help others.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1969,7 +1992,7 @@
                 </div>
                 <!-- Q29 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q29: I experienced a change in the extent to which I reach out and help others.</label>
+                  <label class="question-label required">Q29: I experienced a change in the extent to which I am a confident person.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -1986,7 +2009,7 @@
                 </div>
                 <!-- Q30 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q30: I experienced a change in the extent to which I am a confident person.</label>
+                  <label class="question-label required">Q30: I experienced a change in the extent to which I listen when others talk to me.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2003,7 +2026,7 @@
                 </div>
                 <!-- Q31 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q31: I experienced a change in the extent to which I listen when others talk to me.</label>
+                  <label class="question-label required">Q31: I experienced a change in the extent to which I am open to new information and ideas.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2020,7 +2043,7 @@
                 </div>
                 <!-- Q32 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q32: I experienced a change in the extent to which I am open to new information and ideas.</label>
+                  <label class="question-label required">Q32: I experienced a change in my desire to have some impact on the world.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2037,7 +2060,7 @@
                 </div>
                 <!-- Q33 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q33: I experienced a change in my desire to have some impact on the world.</label>
+                  <label class="question-label required">Q33: I experienced a change in my belief that it's OK to ask others for help.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2054,7 +2077,7 @@
                 </div>
                 <!-- Q34 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q34: I experienced a change in my belief that it's OK to ask others for help.</label>
+                  <label class="question-label required">Q34: I experienced a change in the extent to which I stand up for my personal rights.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2071,7 +2094,7 @@
                 </div>
                 <!-- Q35 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q35: I experienced a change in the extent to which I stand up for my personal rights.</label>
+                  <label class="question-label required">Q35: I experienced a change in my belief about how many people care about me.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2086,9 +2109,20 @@
                     <span class="scale-label">Strongly Agree</span>
                   </div>
                 </div>
+            </div>
+        </div>
+        <!-- End Section 3 -->
+
+        <!-- Section 4: Learning Engagement (Q36-Q50) -->
+        <div class="survey-section">
+            <h3 class="section-title">Section 4: Learning Engagement</h3>
+            <p class="section-instructions">
+                This section is about your engagement with the learning content.
+            </p>
+            <div class="likert-questions">
                 <!-- Q36 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q36: I experienced a change in my belief about how many people care about me.</label>
+                  <label class="question-label required">Q36: The learning content captures my interest.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2103,20 +2137,9 @@
                     <span class="scale-label">Strongly Agree</span>
                   </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Section 3 -->
-
-        <!-- Section 4: Learning Engagement (Q37-Q51) -->
-        <div class="survey-section">
-            <h3 class="section-title">Section 4: Learning Engagement</h3>
-            <p class="section-instructions">
-                This section is about your engagement with the learning content.
-            </p>
-            <div class="likert-questions">
                 <!-- Q37 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q37: The learning content captures my interest.</label>
+                  <label class="question-label required">Q37: The learning material is engaging.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2133,7 +2156,7 @@
                 </div>
                 <!-- Q38 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q38: The learning material is engaging.</label>
+                  <label class="question-label required">Q38: The content is presented in an interesting way.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2150,7 +2173,7 @@
                 </div>
                 <!-- Q39 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q39: The content is presented in an interesting way.</label>
+                  <label class="question-label required">Q39: The learning material is relevant to my goals.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2167,7 +2190,7 @@
                 </div>
                 <!-- Q40 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q40: The learning material is relevant to my goals.</label>
+                  <label class="question-label required">Q40: The content is applicable to my personal interests.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2184,7 +2207,7 @@
                 </div>
                 <!-- Q41 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q41: The content is applicable to my personal interests.</label>
+                  <label class="question-label required">Q41: I can relate the material to my experiences.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2201,7 +2224,7 @@
                 </div>
                 <!-- Q42 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q42: I can relate the material to my experiences.</label>
+                  <label class="question-label required">Q42: The content is useful for my future.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2218,7 +2241,7 @@
                 </div>
                 <!-- Q43 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q43: The content is useful for my future.</label>
+                  <label class="question-label required">Q43: I believe I can succeed in this learning.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2235,7 +2258,7 @@
                 </div>
                 <!-- Q44 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q44: I believe I can succeed in this learning.</label>
+                  <label class="question-label required">Q44: The material is at an appropriate level for me.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2252,7 +2275,7 @@
                 </div>
                 <!-- Q45 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q45: The material is at an appropriate level for me.</label>
+                  <label class="question-label required">Q45: I feel confident in my ability to learn this content.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2269,7 +2292,7 @@
                 </div>
                 <!-- Q46 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q46: I feel confident in my ability to learn this content.</label>
+                  <label class="question-label required">Q46: I can achieve success with effort.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2286,7 +2309,7 @@
                 </div>
                 <!-- Q47 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q47: I can achieve success with effort.</label>
+                  <label class="question-label required">Q47: I feel satisfied with my learning progress.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2303,7 +2326,7 @@
                 </div>
                 <!-- Q48 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q48: I feel satisfied with my learning progress.</label>
+                  <label class="question-label required">Q48: The learning experience meets my expectations.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2320,7 +2343,7 @@
                 </div>
                 <!-- Q49 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q49: The learning experience meets my expectations.</label>
+                  <label class="question-label required">Q49: I am pleased with the outcomes of my learning.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2337,7 +2360,7 @@
                 </div>
                 <!-- Q50 -->
                 <div class="likert-question">
-                  <label class="question-label required">Q50: I am pleased with the outcomes of my learning.</label>
+                  <label class="question-label required">Q50: I feel a sense of accomplishment.</label>
                   <div class="likert-scale">
                     <span class="scale-label">Strongly Disagree</span>
                     <div class="scale-options">
@@ -2348,23 +2371,6 @@
                       <label class="scale-option"><input type="radio" name="q50" value="5" required /><span class="scale-number">5</span></label>
                       <label class="scale-option"><input type="radio" name="q50" value="6" required /><span class="scale-number">6</span></label>
                       <label class="scale-option"><input type="radio" name="q50" value="7" required /><span class="scale-number">7</span></label>
-                    </div>
-                    <span class="scale-label">Strongly Agree</span>
-                  </div>
-                </div>
-                <!-- Q51 -->
-                <div class="likert-question">
-                  <label class="question-label required">Q51: I feel a sense of accomplishment.</label>
-                  <div class="likert-scale">
-                    <span class="scale-label">Strongly Disagree</span>
-                    <div class="scale-options">
-                      <label class="scale-option"><input type="radio" name="q51" value="1" required /><span class="scale-number">1</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="2" required /><span class="scale-number">2</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="3" required /><span class="scale-number">3</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="4" required /><span class="scale-number">4</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="5" required /><span class="scale-number">5</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="6" required /><span class="scale-number">6</span></label>
-                      <label class="scale-option"><input type="radio" name="q51" value="7" required /><span class="scale-number">7</span></label>
                     </div>
                     <span class="scale-label">Strongly Agree</span>
                   </div>
