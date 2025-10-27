@@ -65,6 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin-bottom: 0.5rem;
   color: #e0e7ff;
+  display: inline-block;
 }
 
 .tagline {
@@ -830,7 +831,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+
   .interim-cards-grid {
+
     grid-template-columns: 1fr;
+
   }
+
+}
+
+
+
+#welcome, #important-notes, #opening-story-1, #opening-story-2, #opening-story-3 {
+
+
+
+  background-image: url('../assets/BG01.jpg');
+
+
+
+  background-size: cover;
+
+
+
+  background-position: center;
+
+
+
 }
