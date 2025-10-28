@@ -195,17 +195,12 @@ function handlePreSurveySubmit(e) {
   
   // Store data
   surveyData.preSurvey = data;
-  
+
   // Save anonymous code for later use
   sessionStorage.setItem('anonymous_code', data.demographics.anonymous_code);
-  
-  // Show success message
-  showNotification('Survey completed successfully!', 'success');
-  
-  // Navigate to opening story after short delay
-  setTimeout(() => {
-    navigateTo('opening-story-1');
-  }, 1000);
+
+  // Navigate to opening story
+  navigateTo('opening-story-1');
 }
 
 // Handle post-survey submission
