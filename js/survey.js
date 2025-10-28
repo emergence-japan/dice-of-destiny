@@ -214,11 +214,7 @@ async function handlePostSurveySubmit(e) {
 
   const form = e.target;
 
-  // Validate form
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
+  // No validation required - all fields are optional
 
   // Collect form data
   const formData = new FormData(form);
