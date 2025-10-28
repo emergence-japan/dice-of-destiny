@@ -16,12 +16,11 @@ function initializeSurveys() {
   const preSurveyForm = document.getElementById('pre-survey-form');
   if (preSurveyForm) {
     preSurveyForm.addEventListener('submit', handlePreSurveySubmit);
-    
+
     // Progress tracking
     trackSurveyProgress('pre-survey-form', 'pre-survey-progress', 'answered-count', 44);
-    
-    // Ethnicity validation (at least one required)
-    setupEthnicityValidation();
+
+    // Ethnicity validation removed - all fields now optional
   }
   
   // Post-survey form handling
@@ -138,14 +137,10 @@ function setupEthnicityValidation() {
 // Handle pre-survey submission
 function handlePreSurveySubmit(e) {
   e.preventDefault();
-  
+
   const form = e.target;
-  
-  // Validate form
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
+
+  // No validation required - all fields are optional
   
   // Collect form data
   const formData = new FormData(form);
