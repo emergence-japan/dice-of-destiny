@@ -360,8 +360,13 @@ async function sendToGoogleSheets() {
   // Post-Survey Q51: Open-ended feedback
   flatData.post_q51 = postSurvey.feedback || '';
 
+  // Debug: Log Q51 data
+  console.log('Q51 feedback data:', postSurvey.feedback);
+  console.log('post_q51 in flatData:', flatData.post_q51);
+
   // Send to Google Sheets
   try {
+    console.log('Sending data to Google Sheets:', flatData);
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
