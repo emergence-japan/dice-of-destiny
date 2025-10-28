@@ -39,7 +39,7 @@ function initializeSurveys() {
     }
     
     // Progress tracking
-    trackSurveyProgress('post-survey-form', 'post-survey-progress', 'post-answered-count', 50);
+    trackSurveyProgress('post-survey-form', 'post-survey-progress', 'post-answered-count', 51);
   }
 }
 
@@ -233,7 +233,8 @@ async function handlePostSurveySubmit(e) {
     life_satisfaction: {},
     self_efficacy: {},
     post_traumatic_growth: {},
-    learning_engagement: {}
+    learning_engagement: {},
+    feedback: ''
   };
 
   // Process Likert scale questions (Q1-Q50)
@@ -256,6 +257,9 @@ async function handlePostSurveySubmit(e) {
   for (let i = 36; i <= 50; i++) {
     data.learning_engagement[`q${i}`] = parseInt(formData.get(`q${i}`));
   }
+
+  // Q51: Open-ended feedback
+  data.feedback = formData.get('q51') || '';
 
   // Store data
   surveyData.postSurvey = data;
@@ -352,6 +356,9 @@ async function sendToGoogleSheets() {
                              postSurvey.post_traumatic_growth?.[`q${i}`] ||
                              postSurvey.learning_engagement?.[`q${i}`] || '';
   }
+
+  // Post-Survey Q51: Open-ended feedback
+  flatData.post_q51 = postSurvey.feedback || '';
 
   // Send to Google Sheets
   try {
