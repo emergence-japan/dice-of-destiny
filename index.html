@@ -1397,8 +1397,10 @@
         <section id="interim-story" class="screen story-screen">
           <div class="content-wrapper story-content">
                   <div class="story-text">
-                    <p>After all rolls are complete, take time to look at your board again.</p>
-                    <p>Which cards remain? Which cards were lost? And what does that mean to you?</p>
+                    <p>Before I knew it, a child dressed in an eccentric outfit was standing next to me.</p>
+                    <p>"Hi! You managed to use the 'Dice of Destiny', huh?"<br>
+                    The child spoke again.<br>
+                    "Which card did you lose? Which card did you keep?"</p>
                   </div>
 
                   <div class="interim-cards-display">
@@ -1417,7 +1419,18 @@
                     </div>
                   </div>
 
-                  <button class="btn-primary" onclick="navigateTo('ending-story')">
+                  <div class="interim-message-section">
+                    <div class="story-text">
+                      <p>As I looked at the cards, the child asked, "What meaning does this experience hold for you?"<br>
+                      -What meaning does it hold? I pondered.<br>
+                      "Oh, that's right! Before you return to the real world, why not write a message to someone important to you (family, lover, friend, etc.) about how you felt and what you thought during this experience?"</p>
+                    </div>
+                    <div class="message-input-wrapper">
+                      <textarea id="interim-message" name="interim-message" rows="10" placeholder="Write your message here..." required style="width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; font-size: 16px;"></textarea>
+                    </div>
+                  </div>
+
+                  <button class="btn-primary" onclick="saveInterimMessageAndContinue()">
               Continue
             </button>
           </div>

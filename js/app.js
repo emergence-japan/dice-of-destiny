@@ -579,3 +579,21 @@ function displayInterimCards() {
     });
   }
 }
+
+function saveInterimMessageAndContinue() {
+  const messageTextarea = document.getElementById('interim-message');
+
+  if (!messageTextarea || !messageTextarea.value.trim()) {
+    showNotification('Please write a message before continuing', 'error');
+    return;
+  }
+
+  // Store the interim message in surveyData
+  if (!surveyData.gamePlay) {
+    surveyData.gamePlay = {};
+  }
+  surveyData.gamePlay.interimMessage = messageTextarea.value.trim();
+
+  // Navigate to ending story
+  navigateTo('ending-story');
+}

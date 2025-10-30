@@ -350,6 +350,9 @@ async function sendToGoogleSheets() {
   console.log('Q51 feedback data:', postSurvey.feedback);
   console.log('post_q51 in flatData:', flatData.post_q51);
 
+  // Interim Message (last field in spreadsheet)
+  flatData.interim_message = gamePlay.interimMessage || '';
+
   // Send to Google Sheets
   try {
     console.log('Sending data to Google Sheets:', flatData);
