@@ -141,6 +141,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Story Sections */
+#interim-story {
+  background-image: url('../assets/BG01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .story-content {
   max-width: 700px;
 }
